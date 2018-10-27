@@ -55,16 +55,16 @@
                 @Html.DisplayFor(modelItem => item.ClosedAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Epic.Id)
+                @Html.DisplayFor(modelItem => item.Epic.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Project.Id)
+                @Html.DisplayFor(modelItem => item.Project.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status.Id)
+                @Html.DisplayFor(modelItem => item.Status.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Person.Id)
+                @Html.DisplayFor(modelItem => item.Person.FullName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

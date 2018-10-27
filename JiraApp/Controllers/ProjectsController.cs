@@ -47,7 +47,7 @@ namespace JiraApp.Controllers
         // GET: Projects/Create
         public IActionResult Create()
         {
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id");
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "FullName");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace JiraApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id", project.PersonId);
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "FullName", project.PersonId);
             return View(project);
         }
 
@@ -81,7 +81,7 @@ namespace JiraApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id", project.PersonId);
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "FullName", project.PersonId);
             return View(project);
         }
 
@@ -117,7 +117,7 @@ namespace JiraApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id", project.PersonId);
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "FullName", project.PersonId);
             return View(project);
         }
 

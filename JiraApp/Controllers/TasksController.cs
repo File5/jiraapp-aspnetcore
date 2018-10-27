@@ -50,10 +50,10 @@ namespace JiraApp.Controllers
         // GET: Tasks/Create
         public IActionResult Create()
         {
-            ViewData["EpicId"] = new SelectList(_context.Epics, "Id", "Id");
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id");
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id");
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id");
+            ViewData["EpicId"] = new SelectList(_context.Epics, "Id", "Name");
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "FullName");
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name");
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Name");
             return View();
         }
 
@@ -66,14 +66,15 @@ namespace JiraApp.Controllers
         {
             if (ModelState.IsValid)
             {
+				task.CreatedAt = DateTime.Now;
                 _context.Add(task);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EpicId"] = new SelectList(_context.Epics, "Id", "Id", task.EpicId);
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id", task.PersonId);
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id", task.ProjectId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", task.StatusId);
+            ViewData["EpicId"] = new SelectList(_context.Epics, "Id", "Name", task.EpicId);
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "FullName", task.PersonId);
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name", task.ProjectId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Name", task.StatusId);
             return View(task);
         }
 
@@ -90,10 +91,10 @@ namespace JiraApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["EpicId"] = new SelectList(_context.Epics, "Id", "Id", task.EpicId);
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id", task.PersonId);
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id", task.ProjectId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", task.StatusId);
+            ViewData["EpicId"] = new SelectList(_context.Epics, "Id", "Name", task.EpicId);
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "FullName", task.PersonId);
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name", task.ProjectId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Name", task.StatusId);
             return View(task);
         }
 
@@ -129,10 +130,10 @@ namespace JiraApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EpicId"] = new SelectList(_context.Epics, "Id", "Id", task.EpicId);
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id", task.PersonId);
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id", task.ProjectId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", task.StatusId);
+            ViewData["EpicId"] = new SelectList(_context.Epics, "Id", "Name", task.EpicId);
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "FullName", task.PersonId);
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name", task.ProjectId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Name", task.StatusId);
             return View(task);
         }
 

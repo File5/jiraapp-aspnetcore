@@ -47,7 +47,7 @@ namespace JiraApp.Controllers
         // GET: Epics/Create
         public IActionResult Create()
         {
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id");
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace JiraApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id", epic.ProjectId);
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name", epic.ProjectId);
             return View(epic);
         }
 
@@ -81,7 +81,7 @@ namespace JiraApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id", epic.ProjectId);
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name", epic.ProjectId);
             return View(epic);
         }
 
@@ -117,7 +117,7 @@ namespace JiraApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id", epic.ProjectId);
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name", epic.ProjectId);
             return View(epic);
         }
 
