@@ -45,8 +45,8 @@ namespace JiraApp.Models
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }
-		public DateTime StartDate { get; set; }
-		public DateTime EndDate { get; set; }
+		public DateTime? StartDate { get; set; }
+		public DateTime? EndDate { get; set; }
 
 		public int PersonId { get; set; }
 		public Person Person { get; set; }
@@ -70,7 +70,7 @@ namespace JiraApp.Models
 		public string Title { get; set; }
 		public string Description { get; set; }
 		public DateTime CreatedAt { get; set; }
-		public DateTime ClosedAt { get; set; }
+		public DateTime? ClosedAt { get; set; }
 
 		public int? EpicId { get; set; }
 		public Epic Epic { get; set; }
